@@ -6,7 +6,6 @@ interface ICreateCategoryDTO {
 }
 
 interface IUpdateCategoryDTO {
-  id: string;
   name?: string;
   description?: string;
 }

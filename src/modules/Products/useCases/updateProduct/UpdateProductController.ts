@@ -8,7 +8,6 @@ class UpdateProductController {
     try {
 
       const { id } = request.params;
-      console.log(id)
       const data = request.body;
   
       const updateProductUseCase = container.resolve(UpdateProductUseCase);

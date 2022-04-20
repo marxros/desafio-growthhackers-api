@@ -2,7 +2,6 @@ import { inject, injectable } from "tsyringe";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 interface IRequest {
-  id: string;
   name?: string;
   description?: string;
 }
@@ -14,9 +13,8 @@ class UpdateCategoryUseCase {
     private categoriesRepository: ICategoriesRepository,
   ) {}
 
-  async execute(data: IRequest): Promise<void> {
-    
-    const { id } = data;
+  async execute(id: string, data: IRequest): Promise<void> {
+
 
     if(!id) {
       throw new Error('Category id is required.');

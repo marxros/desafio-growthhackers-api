@@ -5,11 +5,12 @@ import { UpdateCategoryUseCase } from "./UpdateCategoryUseCase";
 class UpdateCategoryController {
   async handle(request: Request, response: Response): Promise<Response> {
     try {
+      const { id } = request.params;
       const data = request.body;
   
       const updateCategoryUseCase = container.resolve(UpdateCategoryUseCase);
   
-      await updateCategoryUseCase.execute(data);
+      await updateCategoryUseCase.execute(id, data);
   
       return response.status(200).send();
       

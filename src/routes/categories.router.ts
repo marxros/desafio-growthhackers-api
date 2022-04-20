@@ -16,7 +16,7 @@ const deleteCategoryController = new DeleteCategoryController();
 categoriesRoutes.post('/', createCategoryController.handle);
 categoriesRoutes.get('/', listCategoriesController.handle);
 categoriesRoutes.get('/:id', detailsProductController.handle);
-categoriesRoutes.put('/', updateCategoryController.handle);
+categoriesRoutes.put('/:id', updateCategoryController.handle);
 categoriesRoutes.delete('/:id', deleteCategoryController.handle);
 
 export { categoriesRoutes };
