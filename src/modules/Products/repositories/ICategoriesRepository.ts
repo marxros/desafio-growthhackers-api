@@ -15,7 +15,7 @@ interface ICategoriesRepository {
   list(): Promise<Category[]>;
   create({ name, description }: ICreateCategoryDTO): Promise<void>;
   findById(id: string): Promise<Category>;
-  update(data: IUpdateCategoryDTO): Promise<void>;
+  update(id: string, data: IUpdateCategoryDTO): Promise<void>;
   delete(id: string): Promise<void>;
 }
 

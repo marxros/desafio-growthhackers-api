@@ -37,8 +37,8 @@ class CategoriesRepository implements ICategoriesRepository {
     return category;
   }
 
-  async update(data: IUpdateCategoryDTO): Promise<void> {
-    await this.repository.update(data.id, data);
+  async update(id: string, data: IUpdateCategoryDTO): Promise<void> {
+    await this.repository.update(id, data);
   }
   
   async delete(id: string): Promise<void> {

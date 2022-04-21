@@ -26,7 +26,7 @@ class UpdateCategoryUseCase {
       throw new Error("Category not found");
     }
 
-    await this.categoriesRepository.update(data);
+    await this.categoriesRepository.update(id, data);
   }
 }
 
