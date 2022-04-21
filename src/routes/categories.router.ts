@@ -4,6 +4,7 @@ import { ListCategoriesController } from '../modules/Products/useCases/listCateg
 import { DetailsProductController } from '../modules/Products/useCases/detailsCategory/DetailsCategoryController';
 import { UpdateCategoryController } from '../modules/Products/useCases/updateCategory/UpdateCategoryController';
 import { DeleteCategoryController } from '../modules/Products/useCases/deleteCategory/DeleteCategoryController';
+import { ExportCategoryController } from '../modules/Products/useCases/exportCategory/ExportCategoryController';
 
 const categoriesRoutes = Router();
 
@@ -15,7 +16,8 @@ const deleteCategoryController = new DeleteCategoryController();
 
 categoriesRoutes.post('/', createCategoryController.handle);
 categoriesRoutes.get('/', listCategoriesController.handle);
-categoriesRoutes.get('/:id', detailsProductController.handle);
+categoriesRoutes.get('/:category/export', exportCategoryController.handle);
+// categoriesRoutes.get('/:id', detailsProductController.handle);
 categoriesRoutes.put('/:id', updateCategoryController.handle);
 categoriesRoutes.delete('/:id', deleteCategoryController.handle);
 

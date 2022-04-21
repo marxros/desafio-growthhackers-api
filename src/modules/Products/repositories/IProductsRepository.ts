@@ -21,6 +21,7 @@ interface IProductsRepository {
   findById(id: string): Promise<Product>;
   update(id: string, product: IUpdateProductDTO): Promise<void>;
   delete(id: string): Promise<void>;
+  findByCategory(category_id: string): Promise<Product[]>;
 }
 
 export { IProductsRepository, ICreateProductDTO, IUpdateProductDTO };
