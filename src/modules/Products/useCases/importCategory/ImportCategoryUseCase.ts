@@ -4,20 +4,26 @@ import { ICategoriesRepository } from "../../repositories/ICategoriesRepository"
 import { IProductsRepository } from "../../repositories/IProductsRepository";
 
 @injectable()
-class ExportCategoryUseCase {
+class ImportCategoryUseCase {
   constructor(
     @inject('CategoriesRepository')
     private categoriesRepository: ICategoriesRepository,
     private productsRepository: IProductsRepository,
   ) {}
 
-  async execute(categoryName: string): Promise<Product[]> {
+  async execute(categoryName: string, products: Product[]): Promise<void> {
     const category = await this.categoriesRepository.findByName(categoryName);
 
-    const products = await this.productsRepository.findByCategory(category.id);
+    if (!category) {
+      throw new Error("Category not found");
+    }
 
-    return products;
+    for (const product of products) {
+      product.category_id = category.id;
+      await this.productsRepository.create(product);
+    }
+    
   }
 }
 
-export { ExportCategoryUseCase };
+export { ImportCategoryUseCase };

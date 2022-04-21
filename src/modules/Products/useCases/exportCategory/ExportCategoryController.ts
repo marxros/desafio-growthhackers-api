@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { ExportCategoriesUseCase } from "./ExportCategoryUseCase";
+import { ExportCategoryUseCase } from "./ExportCategoryUseCase";
 
-class ListCategoriesController {
+class ExportCategoryController {
 
   async handle(request: Request, response: Response): Promise<Response> {
 
     const { category } = request.params;
 
-    const exportCategoryUseCase = container.resolve(ExportCategoriesUseCase);
+    const exportCategoryUseCase = container.resolve(ExportCategoryUseCase);
 
     const products = await exportCategoryUseCase.execute(category);
 
@@ -16,4 +16,4 @@ class ListCategoriesController {
   }
 }
 
-export { ListCategoriesController };
+export { ExportCategoryController };
