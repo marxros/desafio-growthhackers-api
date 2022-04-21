@@ -14,6 +14,10 @@ class ExportCategoryUseCase {
   async execute(categoryName: string): Promise<Product[]> {
     const category = await this.categoriesRepository.findByName(categoryName);
 
+    if (!category) {
+      throw new Error("Category not found");
+    }
+
     const products = await this.productsRepository.findByCategory(category.id);
 
     return products;
