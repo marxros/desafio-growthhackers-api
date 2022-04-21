@@ -25,17 +25,25 @@ class ProductsRepository implements IProductsRepository {
   }
 
   async list(): Promise<Product[]> {
-    const products = await this.repository.find();
+    const products = await this.repository.find({
+      relations: ['category'],
+    });
     return products;
   }
 
   async findByName(name: string): Promise<Product> {
-    const product = await this.repository.findOne({	where: { name } });
+    const product = await this.repository.findOne({	
+      where: { name },
+      relations: ['category'], 
+    });
     return product;
   }
   
   async findById(id: string): Promise<Product> {
-    const product = await this.repository.findOne({ where: { id } });
+    const product = await this.repository.findOne({ 
+      where: { id },
+      relations: ['category'],
+    });
     return product;
   }
 
